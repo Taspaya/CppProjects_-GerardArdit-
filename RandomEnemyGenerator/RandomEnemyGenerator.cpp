@@ -16,7 +16,7 @@ struct Enemy
 
 bool operador(Enemy a, Enemy b) {
 
-	if (a.name == b.name) {
+	if (a.name == b.name && a.type == b.type) {
 
 		return true;
 	}
