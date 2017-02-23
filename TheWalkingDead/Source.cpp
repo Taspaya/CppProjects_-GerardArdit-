@@ -15,7 +15,7 @@ public:
 	int life;	
 	
 	
-Player() {
+	Player() {
 		precision= std::rand() % MAX;
 	}
 
@@ -28,25 +28,34 @@ Player::Player() : weapon(static_cast <Weapon>(rand() % static_cast <int> (Weapo
 class Zombie {
 
 public:
-	Zombie() {};
 	int distanceToPlayer;
+	Zombie() {};
+	
 	float speed;
 	float damage;
 	int life;
-	void attack;
+	void attack(Player &);
 
 };
 
 void Player::attack(Zombie &a) {
 
-	//	Si la distancia hasta el jugador es igual o menor que 0
-	//	entonces se resta el daño del zombie a la vida del jugador.En caso
-	//	contrario, el zombie adelanta un paso más hacia el jugador.	if (a.distanceToPlayer <= 0){		a.life = a.life - (static_cast<int>(weapon)*precision);	}
+	
+	if (a.distanceToPlayer <= 0){
+		a.life = a.life - (static_cast<int>(weapon)*precision);
+	}
 }
 
 void Zombie::attack(Player &z) {
+	
+	//	Si la distancia hasta el jugador es igual o menor que 0
+	//	entonces se resta el daño del zombie a la vida del jugador.En caso
+	//	contrario, el zombie adelanta un paso más hacia el jugador.
 
 
+	if (z.attack <= 0) {
+		z.life = z.life - (static_cast<int>(Weapon)*precision);
+	}
 
 }
 
