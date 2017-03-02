@@ -20,9 +20,16 @@ DynArray::DynArray(size_t size, const int &value)   // creates and initializes t
 
 DynArray::DynArray(int *arr, size_t size)               // initializes each element from an external array
 {
-	//DynArray *arr;
 
 	arr = new int[size];
+	m_capacity = size;
+	m_size = size;
+};
+
+DynArray::~DynArray(void) {
+
+	delete m_data;
+	
 
 
 };
