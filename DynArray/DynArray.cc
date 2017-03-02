@@ -4,8 +4,8 @@
 DynArray::DynArray(){  //constructor
 
 	m_data = new int[DYN_ARRAY_DEFAULT_SIZE];  //inicialitzem els atributs    	
-	m_capacity = 5;
-	m_size =  5;
+	m_capacity = DYN_ARRAY_DEFAULT_SIZE;
+	m_size =  0;
 												
 };
 
