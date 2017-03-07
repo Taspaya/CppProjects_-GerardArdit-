@@ -29,9 +29,6 @@ DynArray::DynArray(int *arr, size_t size)               // initializes each elem
 DynArray::~DynArray(void) {
 
 	delete m_data;
-	
-
-
 };
 
 
