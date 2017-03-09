@@ -1,4 +1,4 @@
-#include "circle.h"
+/*#include "circle.h"
 
 
 int main() {
@@ -13,6 +13,7 @@ int main() {
 
 		return 0,
 
+		 /////////////////////////////////////////// CLASSE BÀSICA CIRCLE /////////////////////////////////////////////////
 
+}*/
 
-}
