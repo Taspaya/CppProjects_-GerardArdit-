@@ -2,6 +2,7 @@
 #include <iostream>
 #include <deque>
 #include <queue>
+#include <algorithm>
 /*
 std::stack<int>superMerge(std::stack<int> stack1, std::stack<int> stack2) {
 
@@ -124,6 +125,7 @@ bool balancedP(std::stack<char> balance) {
 	}
 }*/
 
+/*
 void transformToQ(std::stack<int> stack1) {
 
 	std::queue<int> cola;
@@ -138,13 +140,13 @@ void transformToQ(std::stack<int> stack1) {
 		sstack1.pop();
 	}
 }
+*/
+
+
+
 
 void main() {
 
-	std::stack<int> stack1({ 1,2,3,4 });
-	std::stack<int> stack2({ 5,6,7,8 });
 
-	std::stack<char> balance ({ '(', '(', ')', ')', ')' });
 
-	transformToQ(stack1);
 }
