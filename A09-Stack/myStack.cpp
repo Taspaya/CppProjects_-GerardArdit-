@@ -6,32 +6,15 @@ myStack::myStack()
 {
 	first = nullptr;
 }
-
-
 void myStack::pop() {
-
-
-
+	delete first;
  }
-
-
 void myStack::push(int elm) {
-
-
-	new node
-
-
+	first = new node({ elm, first });
 }
-
-
-
-int front();
-bool isEmpty();
-int size();
-
-myStack copy(myStack stack);
-
-myStack copyArray(int *arr);
-myStack::~myStack()
-{
-}
+int myStack::front() {}
+bool myStack::isEmpty(){}
+int myStack::size(){}
+myStack myStack::copy(myStack stack){}
+myStack myStack::copyArray(int *arr){}
+myStack::~myStack(){}
