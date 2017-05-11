@@ -6,8 +6,7 @@ class myStack
 		node* next;
 	};
 
-	//atributos
-
+	
 	node* first;
 
 
@@ -22,7 +21,7 @@ class myStack
 
 		myStack copy(myStack stack);
 
-		myStack copyArray(int *arr);
+		myStack copyArray(int *arr, int size);
 
 		myStack();
 		~myStack();
