@@ -8,7 +8,13 @@ myStack::myStack()
 }
 
 void myStack::pop() {
-	delete first;
+
+	node* aux = node.next;
+
+	delete &first;
+
+	first = aux;
+
  }
 
 void myStack::push(int elm) {
@@ -17,7 +23,7 @@ void myStack::push(int elm) {
 
 int myStack::front() {
 	
-	return first.element; // retorna el valor int "element" del struct node de l'objecte First
+	return node.first.element;		 // retorna el valor int "element" del struct node de l'objecte First
 
 }
 
@@ -58,4 +64,6 @@ myStack myStack::copyArray(int *arr, int size){
 	}
 
 }
+
+
 myStack::~myStack(){}
