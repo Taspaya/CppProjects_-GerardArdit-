@@ -5,7 +5,7 @@
 #include <deque>
 
 
-
+// Ok
 std::list<int> superMerge(std::list<int> l1, std::list<int> l2) {
 
 	std::list<int> lista;
@@ -33,45 +33,43 @@ std::list<int> superMerge(std::list<int> l1, std::list<int> l2) {
 		queue.push(aux);
 	}
 	// mete toda la queue en la lista ordenada
-	for (int i = 0; i < queue.size(); i++) {
+	int size = queue.size();
+	for (int i = 0; i < size; i++) {
 
 		int aux; 
 		aux = queue.top();
 		queue.pop();
 		lista.push_back(aux);
-	}
-	//printamos la lista
-	for (int i = 0; i < lista.size(); i++) {
-
-		std::cout << lista.front() << std::endl;
-		lista.pop_front();
-	}
+	}	
 	return lista;
 }
-
+// Ok
 std::list<int> change(std::list<int> l1) {
 
-	int first = l1.front();
-	int last = l1.back();
+	std::list<int> lista(l1);
+	int first = lista.front();
+	int last = lista.back();
 
-	l1.pop_back();
-	l1.pop_front();
-	l1.push_back(first);
-	l1.push_back(last);
+	lista.pop_back();
+	lista.pop_front();
+	lista.push_back(first);
+	lista.push_front(last);
 
-	return l1;
+	return lista;
 }
-
+// Ok
 int getElementPos(std::list<int> l1, int pos) {
-
+	// fer-ho amb iterador
 	for (int i = 0; i < pos; i++) {
 		l1.pop_front();
 	}
-	return l1.front();
+	int a = l1.front();
+	return a;
 }
-
+// Ok
 std::list<int> removeDuplicates(std::list<int> l1) {
 
+	std::list<int> listabuena;
 	std::list<int> lista;
 	std::priority_queue<int> dequeue;
 	std::deque<int> queue;
@@ -79,124 +77,84 @@ std::list<int> removeDuplicates(std::list<int> l1) {
 	std::list<int> lista1(l1);
 
 	int size1 = lista1.size();
-
-	// mete toda la lista en la queue
+	// mete toda la lista en la dequeue
 	for (int i = 0; i < size1; i++) {
 		int aux;
 		aux = lista1.front();
 		lista1.pop_front();
 		dequeue.push(aux);
 	}
-
-
 	//recorremos la deque y la metemos en la queue
-	for (int i = 0; i < dequeue.size(); i++) {
+	int medida = dequeue.size();
+	for (int i = 0; i < medida; i++) {
 		int aux;
 		aux = dequeue.top();
 		dequeue.pop();
 		queue.push_front(aux);
 	}
-	
-	//recorremos la deque y la metemos en la queue
-
 	// guardamos el valor anterior en aux, si la pos actual == aux, eleminas el elemento [i]
 	int aux = queue.front();
-	for (int i = 0; i < queue.size(); i++) {
+	//MAL A PARTIR D'AQUI DDD:
+	for (int i = 1; i < queue.size(); i++) {
 
-		if (queue[i] == aux) {		
+		if (aux == queue[i]) {		
 			queue.erase(queue.begin() +i);
-			//queue.erase(queue.begin() + i - 1);
+			aux = queue[i];
 		}
 		else
 		{
 			aux = queue[i];
 		}
 	}
-
-	// vuidem l1
-
-	for (int i = 0; i < l1.size(); i++) {
-
-		l1.pop_front();
-	}
-
+	
 	// Copiamos la queue en otra list y la devolvemos
-
-	for (int i = 0; i < queue.size(); i++) {
+	int mesura = queue.size();
+	for (int i = 0; i < mesura; i++) {
 		int aux;
 		aux = queue.front();
-		l1.push_front(aux);
+		queue.pop_front();
+		listabuena.push_front(aux);
 	}
 	
-	return l1;
+	return listabuena;
 
 }
-
-std::list<int> removeElement(std::list<int> l1, int num) {
-
-	std::list<int> lista;
-	std::priority_queue<int> dequeue;
-	std::deque<int> queue;
-
-	std::list<int> lista1(l1);
-
-	int size1 = lista1.size();
-
-	// mete toda la lista en la queue
-	for (int i = 0; i < size1; i++) {
-		int aux;
-		aux = lista1.front();
-		lista1.pop_front();
-		dequeue.push(aux);
+// Ok
+std::list<int> removeElement(std::list<int>a, int num) {
+	
+	int size = a.size();
+	std::deque<int>helper;
+	for (int i = 0; i < size; i++) {
+		helper.emplace_front(a.front());
+		a.pop_front();
 	}
-
-
-	//recorremos la deque y la metemos en la queue
-	for (int i = 0; i < dequeue.size(); i++) {
-		int aux;
-		aux = dequeue.top();
-		dequeue.pop();
-		queue.push_front(aux);
-	}
-
-	//recorremos la deque y la metemos en la queue
-
-	// guardamos el valor anterior en aux, si la pos actual == aux, eleminas el elemento [i]
-	for (int i = 0; i < queue.size(); i++) {
-
-		if (queue[i] == num) {
-			queue.erase(queue.begin() + i);
-			//queue.erase(queue.begin() + i - 1);
+	int size2 = helper.size();
+	for (int i = 0; i < helper.size(); i++) {
+		if (helper[i] == num) {
+			helper.erase(helper.begin() + i);
+			i--;
 		}
 	}
-
-	// vuidem l1
-
-	for (int i = 0; i < l1.size(); i++) {
-
-		l1.pop_front();
+	int size3 = helper.size();
+	for (int i = 0; i < size3; i++) {
+		a.push_front(helper.front());
+		helper.pop_front();
 	}
-
-	// Copiamos la queue en otra list y la devolvemos
-
-	for (int i = 0; i < queue.size(); i++) {
-		int aux;
-		aux = queue.front();
-		l1.push_front(aux);
-	}
-
+	std::list<int>l1(a);
 	return l1;
-	
 }
-
-bool palindrom(std::list<int> &l1) {
+// Ok
+bool palindrome(std::list<int> &l1) {
 
 	int half = l1.size() / 2;
 	int count = 0;
 
 	for (int i = 0; i < half; i++) {
 		
-		if (l1.begin() == l1.end()) {
+		int first = l1.front();
+		int last = l1.back();
+
+		if (first == last) {
 			count++;
 			l1.pop_back();
 			l1.pop_front();
@@ -214,13 +172,34 @@ bool palindrom(std::list<int> &l1) {
 
 
 }
+// Ok
+void printList(std::list<int> l1) {
+
+
+	int size6 = l1.size();
+	for (int i = 0; i < size6; i++) {
+
+		std::cout << l1.front() << std::endl;
+		l1.pop_front();
+	}
+}
+
+
 
 void main() {
 
-	std::list<int> lista1{ 5,4,3,2,1 };
-	std::list<int> lista2{ 9,8,7,6,5 };
+	std::list<int> tonta1{ 1,2,3,4,5,6,3,2};
+	
 
-	superMerge(lista1, lista2);
+	std::list<int> palindrom{ 1,2,3,4,4,3,2,1 };
 
+	std::cout << "Remove Duplicate " << std::endl;
+	printList(removeDuplicates(tonta1)); // Remove Duplicate
 
-}
+	std::cout << std::endl;
+	std::cout << "Remove Element 2 " << std::endl;
+	printList(removeElement(tonta1, 2)); // Remove Element
+
+	bool a = palindrome(palindrom);	// IsPalindrom
+
+	}
