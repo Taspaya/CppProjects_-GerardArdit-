@@ -7,8 +7,8 @@ class myStack
 	};
 
 	
-	node* first;
-
+	node* first; //attr 
+	
 
 	public:
 
