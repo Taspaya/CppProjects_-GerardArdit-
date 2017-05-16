@@ -10,12 +10,8 @@ List::List()  // constructor defecto
 
 List::List(List &a) { // constructor copia
 
-	
-
 	node* bFirst;
-	
 	bFirst = a.first;
-
 
 	first = new node{nullptr, bFirst->element, last};
 
@@ -34,17 +30,37 @@ List::~List() // destructor defecto
 	delete first;
 	delete last;
 }
+
 void List::pop_front()
 {
-	
-}
+	node* aux;
+	aux = first->next;
 
+	delete first;
+	first = aux;
+}
 
 void List::push_front(int elm) // push front
 {
-	node* next = new node{first};
-	next = next->before;
-	first = new node{nullptr, elm, next};
+	if (first == nullptr) {
+
+		first = new node{nullptr,elm, nullptr};   
+		last = first;
+	}
+	else {
+		//node* aux = first->before;							//first
+																// |
+		node* nodo;												// |
+		node* auxilio;											// v
+		nodo = new node{ nullptr,elm, first};         // asd{//0 - elm - aux}   first{nptr - elm - nptr}
+		nodo->next = first->before;
+		first->before = nodo;
+
+		auxilio = first;
+		first = nodo;
+		nodo = auxilio;
+
+	}
 }
 
 
@@ -56,18 +72,18 @@ void List::push_back(int elm)
 {
 	last = new node{ nullptr, elm, first };
 }
-/*/
-int List::front(){
 
+int List::front(){
+	return 0;
 }
 bool List::isEmpty() {
 
-
+	return true;
  }
 int List::size() {
-
+	return 0;
 }
-*/
+
 
 
 
