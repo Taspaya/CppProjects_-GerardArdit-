@@ -9,6 +9,7 @@
 
 void main() {
 
+	int mida;
 	List a; //crida al constructor per defecte
 
 	a.push_front(5);
@@ -16,5 +17,9 @@ void main() {
 	a.push_front(10);
 
 	a.push_front(20);
+
+	mida = a.size();
+
+	List b(a);
 
 }

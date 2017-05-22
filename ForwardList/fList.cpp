@@ -56,6 +56,11 @@ int fList::size() {
 	return count;
 }
 
+void fList::shiftRight() {
+
+	node* aux = 
+
+}
 void fList::insert_after(int a, int b) {
 
 	node* firstu = first;

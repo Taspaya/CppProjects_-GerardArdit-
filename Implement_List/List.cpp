@@ -44,22 +44,14 @@ void List::push_front(int elm) // push front
 {
 	if (first == nullptr) {
 
-		first = new node{nullptr,elm, nullptr};   
+		first = new node{ nullptr,elm, nullptr };
 		last = first;
 	}
 	else {
-		//node* aux = first->before;							//first
-																// |
-		node* nodo;												// |
-		node* auxilio;											// v
-		nodo = new node{ nullptr,elm, first};         // asd{//0 - elm - aux}   first{nptr - elm - nptr}
-		nodo->next = first->before;
-		first->before = nodo;
 
-		auxilio = first;
-		first = nodo;
-		nodo = auxilio;
-
+		node* aux = new node{ nullptr, first->element, first->next };
+		first = new node{nullptr, elm, aux};
+		aux->before = first->next;
 	}
 }
 
@@ -80,8 +72,18 @@ bool List::isEmpty() {
 
 	return true;
  }
+
 int List::size() {
-	return 0;
+	
+	node* bFirst = first;
+	int count = 0;
+
+	while (bFirst != nullptr) {
+		bFirst = bFirst->next;
+		count++;
+	}
+
+	return count;
 }
 
 

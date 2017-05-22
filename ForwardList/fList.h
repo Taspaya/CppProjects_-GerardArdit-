@@ -22,7 +22,7 @@ public:
 	void erase_after(int a);
 	bool isEmpty();
 	int size();
-
+	void shiftRight();
 
 };
 
