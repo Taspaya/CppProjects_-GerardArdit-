@@ -18,5 +18,6 @@ void main() {
 	a.push_front(4);
 	a.push_front(5);
 
-	a.shift_right();
+	//a.shift_right();
+	//a.shift_left();
 }

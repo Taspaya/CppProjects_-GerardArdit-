@@ -125,7 +125,10 @@ void List::shift_right() {
 
 void List::shift_left() {
 
-
+	int elm = first->element;
+	first = first->next;
+	first->before = nullptr;
+	push_back(elm);
 
 }
 
