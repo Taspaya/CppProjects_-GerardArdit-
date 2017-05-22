@@ -23,5 +23,5 @@ void main() {
 	a.pop_back();
 
 	mida = a.size();
-
+	 
 }
