@@ -20,7 +20,7 @@ void main() {
 
 	mida = a.size();
 
-	a.pop_back();
+	a.pop_front();
 
 	mida = a.size();
 	 

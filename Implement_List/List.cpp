@@ -31,6 +31,7 @@ List::~List() // destructor defecto
 	delete last;
 }
 
+// OK
 void List::pop_front()
 {
 	node* aux;
@@ -38,50 +39,44 @@ void List::pop_front()
 
 	delete first;
 	first = aux;
+	first->before = nullptr;
 }
-
+// OK
 void List::push_front(int elm) // push front
 {
+	node* aux = new node{};
 	if (first == nullptr) {
 
-		first = new node{ nullptr,elm, nullptr };
+		first = new node{ aux,elm, nullptr };
 		last = first;
 	}
 	else {
 
-		node* aux = new node{ nullptr, first->element, first->next };
+		aux = new node{ nullptr, first->element, first->next };
 		first = new node{nullptr, elm, aux};
 		aux->before = first->next;
 	}
 }
 
-
+// NO OK
 void List::pop_back() {
 
-	node* bLast = first;
 
-	delete last;
-	int alcachofa = size();
-
-	for (int i = 0; i < alcachofa - 1; i++) {
-
-		bLast = bLast->next;
-	}
-	
-bLast->next = nullptr;
-	last = bLast;
 
 }
 
+// NO OK
 void List::push_back(int elm) 
 {
 	last = new node{ nullptr, elm, first };
 }
 
+// OK
 int List::front(){
 	return first->element;
 }
 
+// OK
 bool List::isEmpty() {
 
 	if (first == nullptr)
@@ -90,6 +85,7 @@ bool List::isEmpty() {
 	return false; 
  }
 
+// OK
 int List::size() {
 	
 	node* bFirst = first;
