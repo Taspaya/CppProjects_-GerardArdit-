@@ -20,6 +20,8 @@ void main() {
 
 	mida = a.size();
 
-	List b(a);
+	a.pop_back();
+
+	mida = a.size();
 
 }

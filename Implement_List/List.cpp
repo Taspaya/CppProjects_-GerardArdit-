@@ -58,19 +58,36 @@ void List::push_front(int elm) // push front
 
 void List::pop_back() {
 
+	node* bLast = first;
+
+	delete last;
+	int alcachofa = size();
+
+	for (int i = 0; i < alcachofa - 1; i++) {
+
+		bLast = bLast->next;
+	}
+	
+bLast->next = nullptr;
+	last = bLast;
 
 }
+
 void List::push_back(int elm) 
 {
 	last = new node{ nullptr, elm, first };
 }
 
 int List::front(){
-	return 0;
+	return first->element;
 }
+
 bool List::isEmpty() {
 
-	return true;
+	if (first == nullptr)
+		return true;
+
+	return false; 
  }
 
 int List::size() {
