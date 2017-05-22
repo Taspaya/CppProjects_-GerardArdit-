@@ -12,16 +12,11 @@ void main() {
 	int mida;
 	List a; //crida al constructor per defecte
 
+	a.push_front(1);
+	a.push_front(2);
+	a.push_front(3);
+	a.push_front(4);
 	a.push_front(5);
 
-	a.push_front(10);
-
-	a.push_front(20);
-
-	mida = a.size();
-
-	a.pop_front();
-
-	mida = a.size();
-	 
+	a.shift_right();
 }

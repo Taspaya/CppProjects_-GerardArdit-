@@ -22,6 +22,8 @@ public:
 	void push_front(int elm);
 	void pop_back();
 	void push_back(int elm);
+	void shift_right();
+	void shift_left();
 
 	int front();
 	bool isEmpty();

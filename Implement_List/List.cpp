@@ -1,13 +1,10 @@
 #include "List.h"
 
-
-
 List::List()  // constructor defecto
 {
 	first = nullptr;
 	last = nullptr;
 }
-
 List::List(List &a) { // constructor copia
 
 	node* bFirst;
@@ -24,13 +21,11 @@ List::List(List &a) { // constructor copia
 		last = new node{ last, temp ,last };*/
 	}
 }
-
 List::~List() // destructor defecto
 {
 	delete first;
 	delete last;
 }
-
 // OK
 void List::pop_front()
 {
@@ -47,8 +42,7 @@ void List::push_front(int elm) // push front
 	node* aux = new node{};
 	if (first == nullptr) {
 
-		first = new node{ aux,elm, nullptr };
-		last = first;
+		first = last = new node{ aux,elm, nullptr };
 	}
 	else {
 
@@ -57,25 +51,41 @@ void List::push_front(int elm) // push front
 		aux->before = first->next;
 	}
 }
-
-// NO OK
+// OK
 void List::pop_back() {
 
+	node* aux = first;
 
+	int a = size() - 2;
+	for (int i = 0; i < a; i++) {
+
+		aux = aux->next;
+	}
+
+	aux->next = nullptr;
+	delete last;
+	last = aux;
 
 }
-
-// NO OK
+// OK
 void List::push_back(int elm) 
 {
-	last = new node{ nullptr, elm, first };
-}
+	
+	node* aux = first;
 
+	int a = size() - 1;
+	for (int i = 0; i < a; i++) {
+
+		aux = aux->next;
+	}
+	node* nuevo = new node{ aux, elm, nullptr };
+	aux->next = nuevo;
+	last = nuevo;
+}
 // OK
 int List::front(){
 	return first->element;
 }
-
 // OK
 bool List::isEmpty() {
 
@@ -84,7 +94,6 @@ bool List::isEmpty() {
 
 	return false; 
  }
-
 // OK
 int List::size() {
 	
@@ -98,7 +107,26 @@ int List::size() {
 
 	return count;
 }
+// OK
+void List::shift_right() {
+
+	node* bFirst = first;
+	node* aux;
+	int a = size() - 1;
+	for (int i = 0; i < a; i++) {
+
+		bFirst = bFirst->next;
+	}
+	int elm = bFirst->element;
+
+	pop_back();
+	push_front(elm);
+}
+
+void List::shift_left() {
 
 
+
+}
 
 
