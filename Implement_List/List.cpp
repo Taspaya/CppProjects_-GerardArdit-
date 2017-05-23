@@ -122,7 +122,7 @@ void List::shift_right() {
 	pop_back();
 	push_front(elm);
 }
-
+// OK
 void List::shift_left() {
 
 	int elm = first->element;
@@ -132,4 +132,9 @@ void List::shift_left() {
 
 }
 
+void List::rotate_right() {
+	
+
+
+}
 

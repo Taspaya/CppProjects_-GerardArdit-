@@ -20,4 +20,5 @@ void main() {
 
 	//a.shift_right();
 	//a.shift_left();
+	a.rotate_right();
 }
